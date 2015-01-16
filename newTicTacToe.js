@@ -1,10 +1,9 @@
-  console.log('i connected');
   var moves = 0;
-  var gameOver = false;
+  var gameStatus = false;
 
   var clickHandler = function()
   {
-    if (!gameOver && !this.innerHTML.match(/[XO]/))
+    if (!gameStatus && !this.innerHTML.match(/[XO]/))
     {
       if (moves % 2 == 0)
       {
