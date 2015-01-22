@@ -16,7 +16,6 @@ var currentBoard = [
 ];
 
 var j = 0, t = 0, r = 0, i = 0, p = 0, q = 0;
-var winningList = [];
 
 var clickHandler = function() {
   if (!gameStatus && this.innerHTML == '&nbsp;') {
@@ -50,36 +49,29 @@ var winDetect = function(testArray, that){
   }
 
   // console.log('X board:' + currentBoard);
+  var winningList = [];
   for (i = 0; i < currentBoard.length; i++) {
-
     if (currentBoard[i] == 3){
-      console.log(currentBoard);
       winningList.push(i);
     }
     if (currentBoard[i] == -3){
       winningList.push(i);
     }
-
-    if (winningList.length > 0){
-      // highlight(winningList);
-    }
   };
+
+  if (winningList.length > 0){
+    highlight(winningList);
+  }
 };
 
-var highlight = function(winningList) {
-  for (q = 0; q < winningList.length; q++){
-    // console.log(winningKey[q]);
-    // for (p = 0; p < winningKey[q]; p++){
-    //   console.log(winningKey[p]);
-    // }
-    
+var highlight = function(posList) {
+  var q = 0, p = 0;
+  for (q = 0; q < posList.length; q++){
+    for (p = 0; p < winningKey[posList[q]].length; p++){
+      var winner = document.getElementById(winningKey[posList[q]][p]);
+      winner.className = 'winner';
+    }
   }
-  // for (p = 0; p < winningKey.length; p++){
-  //   for (q = 0; q < winningKey[t].length; q++){
-
-  //   }
-  // }
-  // alert('Game Over!');
 }
 
 var tagList = document.getElementsByTagName('td');
