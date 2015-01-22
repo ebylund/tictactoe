@@ -50,21 +50,24 @@ var winDetect = function(testArray, that){
 
   // console.log('X board:' + currentBoard);
   var winningList = [];
+  var player = '';
   for (i = 0; i < currentBoard.length; i++) {
     if (currentBoard[i] == 3){
       winningList.push(i);
+      player = 'X';
     }
     if (currentBoard[i] == -3){
       winningList.push(i);
+      player = 'O';
     }
   };
 
   if (winningList.length > 0){
-    highlight(winningList);
+    highlight(winningList, player);
   }
 };
 
-var highlight = function(posList) {
+var highlight = function(posList, player) {
   var q = 0, p = 0;
   for (q = 0; q < posList.length; q++){
     for (p = 0; p < winningKey[posList[q]].length; p++){
@@ -72,6 +75,8 @@ var highlight = function(posList) {
       winner.className = 'winner';
     }
   }
+  alert('Player ' +player+ ' won!');
+  location.reload();
 }
 
 var tagList = document.getElementsByTagName('td');
