@@ -48,7 +48,6 @@ var winDetect = function(testArray, that){
     }
   }
 
-  // console.log('X board:' + currentBoard);
   var winningList = [];
   var player = '';
   for (i = 0; i < currentBoard.length; i++) {
@@ -82,5 +81,5 @@ var highlight = function(posList, player) {
 var tagList = document.getElementsByTagName('td');
 
 for (var i = 0; i < tagList.length; i++) {
-  tagList[i].onclick = clickHandler;
+  tagList[i].addEventListener('click', clickHandler);
 };
