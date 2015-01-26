@@ -15,6 +15,8 @@ var currentBoard = [
   0,0
 ];
 
+var counter = 0;
+
 var j = 0, t = 0, r = 0, i = 0, p = 0, q = 0;
 
 var clickHandler = function() {
@@ -29,6 +31,11 @@ var clickHandler = function() {
       winDetect(winSetO, this);
     }
     moves = !moves;
+  }
+  counter += 1;
+  if (counter >= 9 && gameStatus == false){
+    alert('Tie Game!');
+    location.reload();
   }
 };
 
@@ -74,6 +81,8 @@ var highlight = function(posList, player) {
       winner.className = 'winner';
     }
   }
+
+  gameStatus = true;
   alert('Player ' +player+ ' won!');
   location.reload();
 }
